@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Enviar nueva transacción</h2>
+<form action="/submit" method="post">
+    <p>Autor: <input type="text" name="author"></p>
+    <p>Contenido:</p>
+    <textarea name="content" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" value="Enviar">
+</form>
+
+<hr>
+<h2>Transacciones en la blockchain</h2>
+{% for post in posts %}
+<div class="post">
+    <div class="author">{{ post.author }}</div>
+    <div class="content">{{ post.content }}</div>
+    <small>Hash anterior: {{ post.hash }}</small><br>
+    <small>Índice: {{ post.index }}</small><br>
+    <small>Fecha: {{ post.timestamp }}</small>
+</div>
+{% endfor %}
+{% endblock %}
